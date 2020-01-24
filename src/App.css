@@ -1,0 +1,97 @@
+.App {
+  background-color: #f7fafc;
+}
+
+.Loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #4a5568;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.List-Empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: #718096;
+  width: 100%;
+}
+
+.Header {
+  display: flex;
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.Header select {
+  display: inline-block;
+  appearance: none;
+  background-color: white;
+  border-width: 1px;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  margin: 0.3rem;
+  border-color: #cbd5e0;
+  outline: 0;
+}
+
+.List {
+  max-width: 500px;
+  margin: auto;
+}
+
+.Repo {
+  background-color: white;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border-radius: 0.25rem;
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
+}
+
+.Repo-Image {
+  border-radius: 0.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 1rem;
+}
+
+.Repo-Title {
+  color: #2d3748;
+  font-weight: bold;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.Repo-Author {
+  color: #4a5568;
+  margin-bottom: 0.4rem;
+  display: block;
+  text-decoration: none;
+}
+
+.Repo-Meta {
+  font-size: 0.8rem;
+  color: #718096;
+}
+
+.Repo-Meta span {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.Repo-Lang {
+  border-radius: 100%;
+  width: 0.8rem;
+  height: 0.8rem;
+  display: inline-block;
+  margin-right: 0.2rem;
+}
