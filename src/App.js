@@ -4,6 +4,7 @@ import List from "./components/List";
 import LanguageFilter from "./components/LanguageFilter";
 import SpokenLanguageFilter from "./components/SpokenLanguageFilter";
 import Sort from "./components/Sort";
+import Search from "./components/Search";
 import { fetchRepositories } from "@huchenme/github-trending";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   const [language, setLanguage] = useState("");
   const [spokenLanguage, setSpokenLanguage] = useState("");
   const [sort, setSort] = useState("");
+  const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -46,9 +48,14 @@ function App() {
     });
   }
 
+  if (search) {
+    sortedRepos = sortedRepos.filter(r => r.name.includes(search));
+  }
+
   return (
     <div className="App">
       <div className="Header">
+        <Search search={search} setSearch={setSearch} />
         <Sort sort={sort} setSort={setSort} />
         <LanguageFilter language={language} setLanguage={setLanguage} />
         <SpokenLanguageFilter

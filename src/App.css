@@ -30,7 +30,8 @@
   flex-wrap: wrap;
 }
 
-.Header select {
+.Header select,
+.Header input {
   display: inline-block;
   appearance: none;
   background-color: white;
@@ -40,6 +41,7 @@
   margin: 0.3rem;
   border-color: #cbd5e0;
   outline: 0;
+  border-style: solid;
 }
 
 .List {
