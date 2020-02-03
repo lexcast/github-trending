@@ -1,7 +1,6 @@
 import React from "react";
-import { spokenLanguages } from "@huchenme/github-trending";
 
-function SpokenLanguageFilter({ spokenLanguage, setSpokenLanguage }) {
+function SpokenLanguageFilter({ spokenLanguage, setSpokenLanguage, spokenLanguages}) {
   return (
     <div className="Filter">
       <select

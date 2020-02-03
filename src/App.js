@@ -5,7 +5,7 @@ import LanguageFilter from "./components/LanguageFilter";
 import SpokenLanguageFilter from "./components/SpokenLanguageFilter";
 import Sort from "./components/Sort";
 import Search from "./components/Search";
-import { fetchRepositories } from "@huchenme/github-trending";
+import { getRepositories, getLanguages, getSpokenLanguages } from "./utils/api";
 
 function App() {
   const [repositories, setRepositories] = useState([]);
@@ -14,15 +14,27 @@ function App() {
   const [sort, setSort] = useState("");
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
+  const [languagesOptions, setLanguagesOptions] = useState([]);
+  const [spokenLanguagesOptions, setSpokenLanguagesOptions] = useState([]);
 
   useEffect(() => {
-    setLoading(true);
-    fetchRepositories({ language, spoken_language_code: spokenLanguage }).then(
-      repositories => {
-        setRepositories(repositories);
-        setLoading(false);
-      }
-    );
+    const loadOptions = async () => {
+        const langaugesResponse = await getLanguages();
+        const spokenLanguagesResponse = await getSpokenLanguages();
+        setLanguagesOptions(langaugesResponse.data);
+        setSpokenLanguagesOptions(spokenLanguagesResponse.data);
+    };
+    loadOptions();
+  }, []);
+
+  useEffect(() => {
+    const loadRepos = async () => {
+      setLoading(true);
+      const repositoriesResponse = await getRepositories({ language, spoken_language_code: spokenLanguage });
+      setRepositories(repositoriesResponse.data);
+      setLoading(false);
+    };
+    loadRepos();
   }, [language, spokenLanguage]);
 
   if (loading) {
@@ -57,8 +69,13 @@ function App() {
       <div className="Header">
         <Search search={search} setSearch={setSearch} />
         <Sort sort={sort} setSort={setSort} />
-        <LanguageFilter language={language} setLanguage={setLanguage} />
+        <LanguageFilter
+          languages={languagesOptions}
+          language={language}
+          setLanguage={setLanguage}
+        />
         <SpokenLanguageFilter
+          spokenLanguages={spokenLanguagesOptions}
           spokenLanguage={spokenLanguage}
           setSpokenLanguage={setSpokenLanguage}
         />

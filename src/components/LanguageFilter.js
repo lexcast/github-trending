@@ -1,7 +1,6 @@
 import React from "react";
-import { languages } from "@huchenme/github-trending";
 
-function LanguageFilter({ language, setLanguage }) {
+function LanguageFilter({ language, setLanguage, languages }) {
   return (
     <div className="Filter">
       <select value={language} onChange={e => setLanguage(e.target.value)}>
