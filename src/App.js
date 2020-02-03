@@ -61,7 +61,7 @@ function App() {
   }
 
   if (search) {
-    sortedRepos = sortedRepos.filter(r => r.name.includes(search));
+    sortedRepos = sortedRepos.filter(r => r.name.toLowerCase().includes(search.trim().toLowerCase()));
   }
 
   return (

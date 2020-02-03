@@ -6,7 +6,7 @@ function Search({ search, setSearch }) {
       <input
         placeholder="Search by repository name"
         value={search}
-        onChange={e => setSearch(e.target.value.trim().toLowerCase())}
+        onChange={e => setSearch(e.target.value)}
       />
     </div>
   );
